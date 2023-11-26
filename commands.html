@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Commands</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            position: relative;
+        }
+        input {
+            padding: 10px;
+            margin-top: 1px; /* Adjusted margin-top */
+            margin-bottom: 10px;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            color: black;
+            align-self: flex-end;
+            }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        #prefixMessage {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        #backToHome {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="prefixMessage">Default prefix = , | [] = optional argument, () = required argument</div>
+    <input type="text" id="searchBar" placeholder="Search..." oninput="updateResults()"> 
+    <a id="backToHome" href="index.html">Back to Home</a>
+    <script>
+        // Your script
+    </script>
+</body>
+    
+    <h2>General</h2>
+    <ul id="generalCommands">
+        <li><a href="#">!help</a> - View the list of commands</li>
+        <li><a href="#">!ping</a> - Check the bot's ping</li>
+        <!-- Add more general commands as needed -->
+    </ul>
+
+    <h2>Admin Only</h2>
+    <ul id="adminCommands">
+        <li><a href="#">!kick</a> - Kick a user</li>
+        <li><a href="#">!ban</a> - Ban a user</li>
+        <!-- Add more admin commands as needed -->
+    </ul>
+
+    <a id="backToHome" href="index.html">Back to Home</a>
+
+<script>
+    function updateResults() {
+        var searchTerm = document.getElementById("searchBar").value.toLowerCase();
+
+        // General Commands
+        var generalList = document.querySelectorAll("#generalCommands li");
+
+        generalList.forEach(function (command) {
+            var commandText = command.textContent || command.innerText;
+            if (commandText.toLowerCase().includes(searchTerm)) {
+                command.style.display = "block";
+            } else {
+                command.style.display = "none";
+            }
+        });
+
+        // Admin Commands
+        var adminList = document.querySelectorAll("#adminCommands li");
+
+        adminList.forEach(function (adminCommand) {
+            var adminCommandText = adminCommand.textContent || adminCommand.innerText;
+            if (adminCommandText.toLowerCase().includes(searchTerm)) {
+                adminCommand.style.display = "block";
+            } else {
+                adminCommand.style.display = "none";
+            }
+        });
+    }
+</script>
+</body>
+</html>
